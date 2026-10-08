@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<nav class="navbar navbar-expand-lg navbar-pokedex">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <div class="pokedex-lens-container">
+        <div class="pokedex-lens-main"></div>
+        <span class="pokedex-sub-led led-red"></span>
+        <span class="pokedex-sub-led led-yellow"></span>
+        <span class="pokedex-sub-led led-green"></span>
+      </div>
+      Pokédex
+    </a>
 
-</body>
-</html>
+    <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#pokedexNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="pokedexNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}" href="/">Všichni Pokémoni</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.endpoint == 'about' %}active{% endif %}" href="/about">O projektu</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

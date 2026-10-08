@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %}Pokédex - Seznam{% endblock %}
+
+{% block content %}
+  <!-- Vložení vyhledávání a filtrů -->
+  {% include 'components/menu.html' %}
+
+  <!-- Statická ukázka mřížky Pokémonů -->
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+
+    <!-- Karta 1 -->
+    <div class="col">
+      <div class="pokemon-card">
+        <span class="pokemon-id">#001</span>
+        <div class="pokemon-card-img-wrapper">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="Bulbasaur">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title text-center">Bulbasaur</h5>
+          <div class="text-center mt-2">
+            <span class="badge-type badge-type-grass">Grass</span>
+            <span class="badge-type badge-type-poison">Poison</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Karta 2 -->
+    <div class="col">
+      <div class="pokemon-card">
+        <span class="pokemon-id">#004</span>
+        <div class="pokemon-card-img-wrapper">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png" alt="Charmander">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title text-center">Charmander</h5>
+          <div class="text-center mt-2">
+            <span class="badge-type badge-type-fire">Fire</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}

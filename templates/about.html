@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}O projektu - Pokédex{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-10">
+    <div class="pokedex-detail-screen my-4">
+
+      <div class="border-bottom border-secondary pb-3 mb-4 text-center text-md-start">
+        <h1 class="display-5 fw-bold text-white mb-2">O projektu Pokédex</h1>
+        <p class="text-white mb-0">Webová aplikace vyvíjená na frameworku Python Flask & Bootstrap 5</p>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <div class="col-12 col-md-7">
+          <h3 class="h4 text-danger mb-3">Co je tento projekt?</h3>
+          <p>
+            Tento Pokédex slouží jako interaktivní katalog Pokémonů. Projekt vznikl za účelem demonstrace čistého propojení backendového Python frameworku <strong>Flask</strong>, šablonovacího systému <strong>Jinja2</strong> a responzivního UI postaveného na <strong>Bootstrap 5</strong> s vlastním úpravami (CSS overrides).
+          </p>
+          <p>
+            Všechny styly využívají retro-futuristický design ikonického červeného Pokédexu včetně charakteristické svítící LED čočky, tmavého rozhraní obrazovky a barevně odlišených typů jednotlivých Pokémonů.
+          </p>
+        </div>
+
+        <div class="col-12 col-md-5">
+          <div class="pokemon-detail-img-container p-3 flex-column align-items-start justify-content-start">
+            <h4 class="h5 text-white mb-3">Technologický stoh</h4>
+            <ul class="list-unstyled w-100 mb-0">
+              <li class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom border-secondary">
+                <span class="stat-label">Backend</span>
+                <span class="badge bg-danger">Python (Flask)</span>
+              </li>
+              <li class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom border-secondary">
+                <span class="stat-label">Templating</span>
+                <span class="badge bg-secondary">Jinja2</span>
+              </li>
+              <li class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom border-secondary">
+                <span class="stat-label">CSS Framework</span>
+                <span class="badge bg-primary">Bootstrap 5</span>
+              </li>
+              <li class="d-flex justify-content-between align-items-center">
+                <span class="stat-label">Vlastní CSS</span>
+                <span class="badge bg-dark border border-secondary">style.css</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-3 border-top border-secondary text-center text-md-start">
+        <a href="/" class="btn btn-pokedex">
+          &larr; Zpět na hlavní stránku
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

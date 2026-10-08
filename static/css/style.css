@@ -1,1 +1,461 @@
-#neco
+/* ==========================================================================
+   POKÉDEX CUSTOM STYLESHEET (Bootstrap 5 Override & Extension)
+   ========================================================================== */
+
+/* ========================================== */
+/* 1. GLOBÁLNÍ OVERRIDES & CSS PROMĚNNÉ      */
+/* ========================================== */
+
+:root {
+  /* Pokédex Červená Paleta */
+  --pokedex-red-main: #dc0a2d;
+  --pokedex-red-dark: #8b0000;
+  --pokedex-red-light: #ff3b56;
+
+  /* Typografické & UI Barvy */
+  --pokedex-bg: #232323;
+  --pokedex-screen-bg: #dedede;
+  --pokedex-screen-screen-inner: #f1f5f9;
+  --pokedex-screen-border: #212529;
+  --pokedex-dark-card: #1e1e24;
+  --pokedex-text-muted: #6c757d;
+
+  /* Typy Pokémonů (Pokémon Type Palette) */
+  --type-normal: #a8a77a;
+  --type-fire: #ee8130;
+  --type-water: #6390f0;
+  --type-electric: #f7d02c;
+  --type-grass: #7ac74c;
+  --type-ice: #96d9d6;
+  --type-fighting: #c22e28;
+  --type-poison: #a33ea2;
+  --type-ground: #e2bf65;
+  --type-flying: #a98ff3;
+  --type-psychic: #f95587;
+  --type-bug: #a6b91a;
+  --type-rock: #b6a136;
+  --type-ghost: #735797;
+  --type-dragon: #6f35fc;
+  --type-dark: #705746;
+  --type-steel: #b7b7ce;
+  --type-fairy: #d685ad;
+
+  /* Bootstrap Variable Overrides */
+  --bs-primary: var(--pokedex-red-main);
+  --bs-primary-rgb: 220, 10, 45;
+  --bs-body-font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Base Body Styles */
+body {
+  background-color: var(--pokedex-bg);
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0),
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, var(--pokedex-bg) 0);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Vlastní Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pokedex-red-main);
+  border-radius: 5px;
+  border: 2px solid #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pokedex-red-light);
+}
+
+/* ========================================== */
+/* 2. KOMPONENTA: NAVBAR (navbar.html)        */
+/* ========================================== */
+
+.navbar-pokedex {
+  background-color: var(--pokedex-red-main) !important;
+  border-bottom: 5px solid var(--pokedex-red-dark);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  padding: 0.75rem 0;
+  position: relative;
+  z-index: 1000;
+}
+
+.navbar-pokedex .navbar-brand {
+  color: #ffffff !important;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Svítící Modrá Čočka / LED Indicator */
+.pokedex-lens-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 10px;
+}
+
+.pokedex-lens-main {
+  width: 38px;
+  height: 38px;
+  background: radial-gradient(circle at 35% 35%, #80e5ff, #00a2ff 40%, #004488 85%);
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 10px rgba(0, 162, 255, 0.8),
+    inset 0 0 8px rgba(255, 255, 255, 0.8);
+  animation: lensGlow 2.5s infinite alternate;
+  position: relative;
+}
+
+@keyframes lensGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 162, 255, 0.6), inset 0 0 5px rgba(255, 255, 255, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 18px rgba(0, 217, 255, 1), inset 0 0 12px rgba(255, 255, 255, 0.9);
+  }
+}
+
+.pokedex-sub-led {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  display: inline-block;
+}
+
+.pokedex-sub-led.led-red { background: radial-gradient(circle at 30% 30%, #ff8888, #cc0000); }
+.pokedex-sub-led.led-yellow { background: radial-gradient(circle at 30% 30%, #ffff88, #cccc00); }
+.pokedex-sub-led.led-green { background: radial-gradient(circle at 30% 30%, #88ff88, #00cc00); }
+
+/* Navigační Odkazy */
+.navbar-pokedex .nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px;
+}
+
+.navbar-pokedex .nav-link:hover,
+.navbar-pokedex .nav-link.active {
+  color: #ffffff !important;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================== */
+/* 3. KOMPONENTA: FOOTER (footer.html)        */
+/* ========================================== */
+
+.footer-pokedex {
+  margin-top: auto;
+  background-color: #151518;
+  border-top: 4px solid var(--pokedex-red-main);
+  color: var(--pokedex-text-muted);
+  padding: 1.5rem 0;
+  font-size: 0.9rem;
+}
+
+.footer-pokedex a {
+  color: var(--pokedex-red-light);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-pokedex a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* ========================================== */
+/* 4. KOMPONENTA: POKÉMON CARD (card.html)    */
+/* ========================================== */
+
+.pokemon-card {
+  background-color: var(--pokedex-dark-card);
+  border: 2px solid #33333d;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  height: 100%;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(220, 10, 45, 0.3);
+  border-color: var(--pokedex-red-main);
+}
+
+/* Horní ID Číslo (#001) */
+.pokemon-card .pokemon-id {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 8px;
+  border-radius: 12px;
+  z-index: 2;
+}
+
+/* Pozadí pod obrázkem Pokémona */
+.pokemon-card-img-wrapper {
+  background: radial-gradient(circle at center, #2e2e38 0%, #18181c 100%);
+  padding: 1.5rem;
+  text-align: center;
+  position: relative;
+  border-bottom: 2px solid #2a2a32;
+}
+
+.pokemon-card-img-wrapper img {
+  max-height: 140px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 8px rgba(0,0,0,0.4));
+  transition: transform 0.3s ease;
+}
+
+.pokemon-card:hover .pokemon-card-img-wrapper img {
+  transform: scale(1.1);
+}
+
+.pokemon-card .card-body {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pokemon-card .card-title {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  text-transform: capitalize;
+}
+
+/* ========================================== */
+/* 5. KOMPONENTA: VYHLEDÁVÁNÍ A FILTRY        */
+/* ========================================== */
+
+.pokedex-search-container {
+  background: var(--pokedex-dark-card);
+  border: 1px solid #33333d;
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  margin-bottom: 2rem;
+}
+
+.pokedex-search-container .form-control,
+.pokedex-search-container .form-select {
+  background-color: #121215;
+  border: 2px solid #33333d;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.pokedex-search-container .form-control:focus,
+.pokedex-search-container .form-select:focus {
+  background-color: #121215;
+  color: #ffffff;
+  border-color: var(--pokedex-red-main);
+  box-shadow: 0 0 0 0.25rem rgba(220, 10, 45, 0.25);
+}
+
+.pokedex-search-container .form-control::placeholder {
+  color: #71717a;
+}
+
+.btn-pokedex {
+  background-color: var(--pokedex-red-main);
+  border: none;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 0.6rem 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.btn-pokedex:hover,
+.btn-pokedex:focus {
+  background-color: var(--pokedex-red-light);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 59, 86, 0.5);
+}
+
+/* ========================================== */
+/* 6. KOMPONENTA: DETAIL POKÉMONA             */
+/* ========================================== */
+
+/* Kontejner simulující vnitřní screen Pokédexu */
+.pokedex-detail-screen {
+  background-color: var(--pokedex-dark-card);
+  border: 3px solid #33333d;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8), 0 10px 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.pokemon-detail-img-container {
+  background: radial-gradient(circle, #2e2e38 0%, #121215 100%);
+  border: 2px solid #33333d;
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 280px;
+}
+
+.pokemon-detail-img-container img {
+  max-width: 100%;
+  max-height: 240px;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.6));
+}
+
+/* Staty a Progress Bary */
+.stat-row {
+  margin-bottom: 0.75rem;
+}
+
+.stat-label {
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+.pokedex-detail-screen .progress {
+  height: 12px;
+  background-color: #121215;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #33333d;
+}
+
+.pokedex-detail-screen .progress-bar {
+  background-color: var(--pokedex-red-main);
+  background-image: linear-gradient(45deg, 
+    rgba(255, 255, 255, 0.15) 25%, 
+    transparent 25%, 
+    transparent 50%, 
+    rgba(255, 255, 255, 0.15) 50%, 
+    rgba(255, 255, 255, 0.15) 75%, 
+    transparent 75%, 
+    transparent);
+  background-size: 1rem 1rem;
+  border-radius: 6px;
+  transition: width 0.8s ease-in-out;
+}
+
+/* ========================================== */
+/* 7. TYPY POKÉMONŮ (Badge Color Coding)     */
+/* ========================================== */
+
+.badge-type {
+  display: inline-block;
+  padding: 0.35em 0.8em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 8px;
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-right: 4px;
+  margin-bottom: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.badge-type-normal   { background-color: var(--type-normal); }
+.badge-type-fire     { background-color: var(--type-fire); }
+.badge-type-water    { background-color: var(--type-water); }
+.badge-type-electric { background-color: var(--type-electric); color: #000000 !important; text-shadow: none; }
+.badge-type-grass    { background-color: var(--type-grass); }
+.badge-type-ice      { background-color: var(--type-ice); color: #000000 !important; text-shadow: none; }
+.badge-type-fighting { background-color: var(--type-fighting); }
+.badge-type-poison   { background-color: var(--type-poison); }
+.badge-type-ground   { background-color: var(--type-ground); }
+.badge-type-flying   { background-color: var(--type-flying); }
+.badge-type-psychic  { background-color: var(--type-psychic); }
+.badge-type-bug      { background-color: var(--type-bug); }
+.badge-type-rock     { background-color: var(--type-rock); }
+.badge-type-ghost    { background-color: var(--type-ghost); }
+.badge-type-dragon   { background-color: var(--type-dragon); }
+.badge-type-dark     { background-color: var(--type-dark); }
+.badge-type-steel    { background-color: var(--type-steel); color: #000000 !important; text-shadow: none; }
+.badge-type-fairy    { background-color: var(--type-fairy); }
+
+/* ========================================== */
+/* 8. RESPONZIVITA & MEDIA QUERIES           */
+/* ========================================== */
+
+/* Mobilní zařízení (pod 576px) */
+@media (max-width: 575.98px) {
+  .navbar-pokedex .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .pokedex-lens-main {
+    width: 28px;
+    height: 28px;
+  }
+
+  .pokedex-sub-led {
+    width: 8px;
+    height: 8px;
+  }
+
+  .pokedex-detail-screen {
+    padding: 1rem;
+  }
+
+  .pokemon-detail-img-container {
+    min-height: 200px;
+    padding: 1rem;
+  }
+
+  .pokemon-card-img-wrapper img {
+    max-height: 110px;
+  }
+}
+
+/* Tablety a menší skla (pod 768px) */
+@media (max-width: 767.98px) {
+  .pokedex-search-container {
+    padding: 1rem;
+  }
+
+  .pokedex-search-container .btn-pokedex {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+}
