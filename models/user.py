@@ -17,5 +17,5 @@ class User:
     def je_aktivni(self):
         return self.__aktivni
 
-    def deaktivo(self):
+    def deaktivovat(self):
         return self.__aktivni == False

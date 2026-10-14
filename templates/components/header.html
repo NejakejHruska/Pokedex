@@ -17,10 +17,13 @@
     <div class="collapse navbar-collapse" id="pokedexNavbar">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}" href="/">Všichni Pokémoni</a>
+          <a class="nav-link" href="/">Všichni Pokémoni</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if request.endpoint == 'about' %}active{% endif %}" href="/about">O projektu</a>
+          <a class="nav-link" href="/about">O projektu</a>
+        </li>
+        <li class="nav-item">
+          <a class ="nav-link" href="/admin">Admin</a>
         </li>
       </ul>
     </div>
