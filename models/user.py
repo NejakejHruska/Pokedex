@@ -1,8 +1,9 @@
 class User:
-    def __innit__(self, jmeno, prijmeni, email, nickname, role='uzivatel'):
+    def __init__(self, id, jmeno, prijmeni, password, email, nickname, role='uzivatel'):
         self.id = id
         self.jmeno = jmeno
         self.prijmeni = prijmeni
+        self.password = password
         self.email = email
         self.nickname = nickname
         self.role = role
@@ -18,4 +19,4 @@ class User:
         return self.__aktivni
 
     def deaktivovat(self):
-        return self.__aktivni == False
+        self.__aktivni = False
