@@ -20,3 +20,6 @@ class User:
 
     def deaktivovat(self):
         self.__aktivni = False
+
+    def over_heslo(self, heslo):
+        self.password == heslo
