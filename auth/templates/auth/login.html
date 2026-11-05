@@ -65,7 +65,12 @@
       <!-- Spodní odkaz na registraci -->
       <div class="pt-3 border-top border-secondary text-center">
         <p class="small text-white-50 mb-0">
+            {% if chyba %}
+                {{ chyba }}
+            {% else %}
+
           Nemáte ještě účet? <a href="#" class="text-danger fw-bold text-decoration-none">Zaregistrujte se</a>
+            {% endif %}
         </p>
       </div>
 

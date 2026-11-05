@@ -1,19 +1,21 @@
-from data_uzivatele import uzivatele
-
-
 class AuthService:
     def __init__(self, uzivatele):
-        self.__uzivatele = uzivatele
+        self.uzivatele = uzivatele
 
     def najdi_uzivatele(self, email):
-        for uzivatele in self.__uzivatele:
-            if uzivatele.email == email:
-                return uzivatele
+        for uzivatel in self.uzivatele:
+            if uzivatel.email == email:
+                return uzivatel
 
         return None
 
     def prihlas(self, email, heslo):
-        uzivatele self.najdi_uzivatele(email):
+        uzivatel = self.najdi_uzivatele(email)
 
-        if uzivatele is None:
+        if uzivatel is None:
             return None
+
+        if uzivatel.over_heslo(heslo):
+            return uzivatel
+
+        return None

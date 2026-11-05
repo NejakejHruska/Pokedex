@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 app.register_blueprint(auth_bp)
 
+@app.secret_key = 'Pokemon_Tajny_Klic'
 @app.route("/")
 def index():
     return render_template("index.html")

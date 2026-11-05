@@ -22,4 +22,4 @@ class User:
         self.__aktivni = False
 
     def over_heslo(self, heslo):
-        self.password == heslo
+        return  self.password == heslo
