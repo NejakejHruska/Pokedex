@@ -18,6 +18,9 @@ def login():
         if uzivatel is not None:
             session.clear()
             session['uzivatel_id'] = uzivatel.id
+            session['uzivatel_jmeno'] = uzivatel.jmeno
+            session['uzivatel_prijmeni'] = uzivatel.prijmeni
+            session['uzivatel_role'] = uzivatel.role
 
             return redirect(url_for('index'))
 
