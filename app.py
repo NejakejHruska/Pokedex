@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session, redirect, url_for
 from data_uzivatele import uzivatele
 from auth import auth_bp
 
@@ -17,6 +17,12 @@ def about():
 
 @app.route("/admin")
 def admin():
+    if session.get("uzivatel_id") is None:
+        return redirect(url_for("auth.login"))
+
+    if session.get("uzivatel_role") != "admin":
+        return redirect(url_for("index"))
+
     return render_template("admin.html", uzivatele=uzivatele)
 
 if __name__ == "__main__":

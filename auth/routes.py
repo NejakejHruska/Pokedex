@@ -5,6 +5,7 @@ from .templates.auth.auth_service import AuthService
 
 auth = AuthService(uzivatele)
 
+
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     chyba = None
@@ -27,3 +28,16 @@ def login():
         chyba = 'Nesprávný E-Mail nebo heslo'
 
     return render_template('auth/login.html', chyba=chyba)
+
+
+@auth_bp.route('/profil')
+def profil():
+    if session.get("uzivatel_id") is None:
+        return redirect(url_for('auth.login'))
+    return render_template('auth/profil.html')
+
+
+@auth_bp.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('auth.login'))
