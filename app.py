@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, redirect, url_for
+from flask import Flask, render_template, session, redirect, url_for, abort
 from data_uzivatele import uzivatele
 from auth import auth_bp
 
@@ -21,9 +21,13 @@ def admin():
         return redirect(url_for("auth.login"))
 
     if session.get("uzivatel_role") != "admin":
-        return redirect(url_for("index"))
+        abort(403)
 
     return render_template("admin.html", uzivatele=uzivatele)
+
+@app.errorhandler(403)
+def forbidden(e):
+    return render_template("403.html"), 403
 
 if __name__ == "__main__":
     app.run(debug=True)
